@@ -21,7 +21,6 @@ void dijkstra(iPair source)
     {
         auto  v = pq.top();
         pq.pop();
-        cout<<v.first<<" weights"<<endl;
         for (auto vertices : g[v.second.first][v.second.second])
         {
             int wt = vertices.first;
@@ -95,11 +94,7 @@ int main()
 
                 else
                 {
-                    // total lost fuel = wt + k - j ei poriman fuel ami u er filling station theke nibo
-                    // this could be 0 as well but negative gulake igonre kortesi
                     g[u][j].push_back({(wt + k - j) * weights[u - 1], {v, k}});
-                    // cout << u << "," << j << " to " << v << "," << k << "weight : ";
-                    // cout << (wt + k - j) * weights[u - 1] << endl;
                 }
             }
         }
@@ -108,21 +103,8 @@ int main()
     int s, d;
     cin >> s >> d;
     dijkstra({s, 0});
-
     int min = INF;
-    //cout<<dist[d][0]<<endl;
-    cout<<dist[d][0]<<" last"<<endl;
-    for (int i = 0; i <= 10; i++)
-    {
-        //cout << dist[d][i] << endl;
-        if (dist[d][i] < min)
-        {
-            min = dist[d][i];
-        }
-    }
-
-
-
+    min = dist[d][0];
     if (min == INF)
     {
         cout << "impossible" << endl;
@@ -130,16 +112,7 @@ int main()
     }
 
     else{
-        cout<<"min is : "<<min<<endl;
+        cout<<"minimum distance is : "<<min<<endl;
     }
-
-    // cout<<" printing parents "<<endl;
-    // iPair it = {d,2};
-    // iPair in = {INF,INF};
-    // while(it != in){
-    //     cout<<it.first<<" "<<it.second<<endl;
-    //     it = parent[it.first][it.second];
-    // }
-
     return 0;
 }
