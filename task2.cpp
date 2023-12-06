@@ -15,7 +15,7 @@ pair<bool,int> bellman_ford(vector<pair<int,iPair>> edges, int n,int source,int 
             int v = edge.second.second;
             if(dist[v] > dist[u] + w){
                 if(i == n-1){
-                    x = false;
+                    x = false;  // existence of a cycle
                 }
                 dist[v] = dist[u] + w;
             }
@@ -50,7 +50,7 @@ int main(){
             cout<<weight<<" "<<x.second;
             return 0;
         }
-
+        
         edges.pop_back();
     }
 
