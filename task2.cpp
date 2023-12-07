@@ -50,7 +50,6 @@ int main(){
             cout<<weight<<" "<<x.second;
             return 0;
         }
-        
         edges.pop_back();
     }
 
